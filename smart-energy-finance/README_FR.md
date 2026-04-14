@@ -1,74 +1,154 @@
 ## 📊 Présentation
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="800"/>
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/compteur.png" width="900"/>
 
-Smart Energy Finance est un add-on Home Assistant avancé permettant de :
+Smart Energy Finance est un add-on Home Assistant avancé conçu pour analyser la partie financière de votre installation énergétique.
 
-* 💰 Calculer le coût réel de l’énergie
-* ⚡ Valoriser la production solaire
-* 🔋 Évaluer la rentabilité batterie
-* 📈 Suivre les économies dans le temps
+Il permet de comprendre facilement :
+
+* le coût réel de votre électricité
+* la valeur de votre production solaire
+* la rentabilité de votre batterie
+* la dépendance au réseau
+* votre niveau d’autosuffisance
+* les économies réalisées dans le temps
+
+L’add-on crée automatiquement des entités Home Assistant ainsi qu’un dashboard prêt à l’emploi pour afficher vos analyses financières au jour, au mois et à l’année.
+
+---
+
+## ❤️ Soutenir le développeur
+
+Si vous aimez ce projet, vous pouvez soutenir son développement ici :
+
+[![Ko-fi](https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/kofi-button.png)](https://ko-fi.com/tapion69)
+
+Le mode Premium est disponible via Ko-fi.
+Après votre soutien / achat, vous recevez votre clé premium.
 
 ---
 
 ## ⚠️ Recommandation importante
 
-👉 Il est fortement recommandé d’utiliser :
+Pour obtenir les meilleurs résultats, il est **fortement recommandé** d’utiliser :
 
-* ✅ Des compteurs d’énergie (kWh journaliers)
-* ❌ Pas des capteurs de puissance (W)
+* ✅ des compteurs d’énergie journaliers en **kWh**
+* ❌ et non des capteurs de puissance bruts en **W**
 
 Pourquoi :
 
-* Calculs plus précis
-* Pas de dérive dans le temps
-* Statistiques fiables
+* calculs beaucoup plus précis
+* meilleure stabilité dans le temps
+* historique journalier / mensuel / annuel fiable
+* moins d’erreurs et moins de dérive
+
+Les capteurs de puissance peuvent fonctionner dans certains cas, mais les compteurs d’énergie restent la solution la plus propre et la plus fiable.
 
 ---
 
-## ⚡ Dashboard Énergie
+## 🔌 Compatibilité
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="800"/>
+Ce module est compatible avec :
+
+* les onduleurs
+* les panneaux solaires
+* les batteries
+* les capteurs d’énergie Home Assistant
+* les entités personnalisées venant d’autres add-ons ou intégrations
+
+Il a été conçu pour rester flexible et fonctionner avec de nombreux types d’installations, à condition que les entités nécessaires soient disponibles dans Home Assistant.
 
 ---
 
-## 🔋 Analyse Batterie
+## 💰 Ce que fait Smart Energy Finance
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="800"/>
+L’add-on calcule automatiquement et crée des entités pour :
+
+* les économies du jour
+* les économies du mois
+* les économies de l’année
+* la valeur financière de la production solaire
+* la valeur financière de la décharge batterie
+* le coût réel total avec abonnement inclus
+* le coût estimé sans solaire
+* l’analyse import / export réseau
+* les ratios d’autosuffisance et de dépendance réseau
 
 ---
 
-## 💰 Dashboard Économie
+## ⚡ Dashboard Premium Énergie
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="800"/>
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
+
+Le dashboard Énergie comprend :
+
+* la répartition solaire / batterie / réseau
+* le mix énergétique en temps réel
+* l’analyse de l’autosuffisance
+* la vue de dépendance réseau
+* le contexte tarifaire énergétique
+* des cartes d’analyse premium
+
+---
+
+## 🔋 Dashboard Premium Batterie
+
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
+
+Le dashboard Batterie comprend :
+
+* l’analyse charge / décharge batterie
+* la valorisation financière de l’usage batterie
+* les statistiques batterie mensuelles et annuelles
+* des donuts premium
+* une vue détaillée des économies batterie
+
+---
+
+## 💶 Dashboard Premium Économie
+
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
+
+Le dashboard Économie comprend :
+
+* la répartition financière journalière
+* la vue des économies mensuelles
+* la vue des économies annuelles
+* l’analyse de la valeur solaire
+* l’impact financier de la batterie
+* l’effet du coût d’abonnement
+* des donuts premium et une vue historique
 
 ---
 
 ## 📈 Fonctionnalités Premium
 
-Le module inclut un mode **Premium** débloquant :
+Smart Energy Finance inclut un mode **Premium** qui débloque des fonctions avancées.
 
-* 📊 Dashboards avancés
-* 📈 Historique complet (jour / mois / année)
-* 🔋 Analyse financière batterie
-* 💡 Insights énergétiques
-* 📉 Analyse détaillée des coûts
+### Le Premium comprend :
+
+* des dashboards premium avancés
+* l’historique jour / mois / année
+* l’analyse financière de la batterie
+* des donuts avancés
+* des statistiques longue durée
+* des vues Home Assistant enrichies
+* des insights premium pour optimiser votre énergie
 
 ---
 
-## 💳 Activation Premium
+## 💳 Comment obtenir le Premium
 
-👉 Le Premium est disponible via Ko-fi :
+Le Premium est disponible via Ko-fi :
 
 [https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
 
-Après achat, vous recevez une **clé premium**.
+Après votre soutien / achat, vous recevez votre clé premium.
+Cette clé peut ensuite être ajoutée dans la configuration de l’add-on pour débloquer les fonctions premium.
 
 ---
 
-## ⚙️ Configuration
-
-Exemple :
+## ⚙️ Exemple de configuration
 
 mqtt_host: core-mosquitto
 mqtt_port: 1883
@@ -81,19 +161,72 @@ contract_type: tempo
 monthly_subscription_price: 12.5
 
 dashboard_language: fr
+dashboard_custom_cards_installed: true
 
 ---
 
-# 🧑‍💻 Author
+## 📊 Principaux capteurs générés
 
-Developed by Tapion69
+### Finance
+
+* sensor.smart_energy_finance_day_savings_vs_no_solar
+* sensor.smart_energy_finance_month_savings_vs_no_solar
+* sensor.smart_energy_finance_year_savings_vs_no_solar
+
+### Énergie
+
+* sensor.smart_energy_finance_day_solar_kwh
+* sensor.smart_energy_finance_day_grid_import_kwh
+* sensor.smart_energy_finance_day_grid_export_kwh
+* sensor.smart_energy_finance_day_load_kwh
+
+### Batterie
+
+* sensor.smart_energy_finance_battery_day_savings
+* sensor.smart_energy_finance_battery_month_savings
+* sensor.smart_energy_finance_battery_year_savings
+
+### Historique
+
+* sensor.smart_energy_finance_history_archive
+
+  * daily
+  * monthly
+  * yearly
 
 ---
 
-# ❤️ Support
+## 🚀 Création automatique du dashboard
 
-If you enjoy this project:
+L’add-on crée automatiquement un dashboard premium dans Home Assistant.
 
-👉 [https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
+Cela signifie :
+
+* aucune configuration Lovelace manuelle nécessaire
+* utilisation automatique des entités
+* support FR / EN
+* fonctionnement avec ou sans cartes custom
+* présentation visuelle optimisée pour le premium
 
 ---
+
+## 🛠️ Technologies utilisées
+
+* Node-RED
+* MQTT Discovery
+* ApexCharts
+* API Supervisor Home Assistant
+
+---
+
+## 🧑‍💻 Auteur
+
+Développé par Tapion69
+
+---
+
+## ❤️ Soutien
+
+Si vous aimez ce projet et souhaitez soutenir son développement :
+
+[https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
