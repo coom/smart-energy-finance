@@ -2,6 +2,9 @@
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/compteur.png" width="900"/>
 
+➡️ French documentation:  
+https://github.com/jean-luc1203/smart-energy-finance/blob/main/smart-energy-finance/README_FR.md
+
 Smart Energy Finance is an advanced Home Assistant add-on designed to analyze the financial side of your energy system.
 
 It helps you understand:
