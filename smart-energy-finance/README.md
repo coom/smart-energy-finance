@@ -8,13 +8,13 @@
 
 If you like this project, you can support development here:
 
-[![Ko-fi](https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/images/kofi-button.png)](https://ko-fi.com/tapion69)
+[![Ko-fi](https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/kofi-button.png)](https://ko-fi.com/tapion69)
 
 ---
 
 ## 📊 Overview
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/images/economie.png" width="800"/>
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="800"/>
 
 Smart Energy Finance is an advanced Home Assistant add-on designed to:
 
@@ -50,7 +50,7 @@ The system automatically creates Home Assistant entities to track:
 
 ## ⚡ Energy Dashboard
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/images/energie.png" width="800"/>
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="800"/>
 
 * Solar / Battery / Grid distribution
 * Real-time energy mix
@@ -61,7 +61,7 @@ The system automatically creates Home Assistant entities to track:
 
 ## 🔋 Battery Analytics
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/images/batterie.png" width="800"/>
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="800"/>
 
 * Charge / discharge tracking
 * Battery energy usage
@@ -72,7 +72,7 @@ The system automatically creates Home Assistant entities to track:
 
 ## 💰 Economy Dashboard
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/images/economie.png" width="800"/>
+<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="800"/>
 
 * Daily financial distribution
 * Monthly overview
