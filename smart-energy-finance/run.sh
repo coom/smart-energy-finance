@@ -19,7 +19,6 @@ logi "Smart Energy Finance: init..."
 
 OPTS="/data/options.json"
 TMP="/data/flows.tmp.json"
-INSTANCE_FILE="/data/smart_energy_finance_instance_id"
 ADDON_DATA_DIR="/data/smart-energy-finance"
 DASHBOARDS_DIR="/config/dashboards"
 
@@ -33,28 +32,11 @@ if [ ! -f "$OPTS" ]; then
   exit 1
 fi
 
-jq_str_or() {
-  local jq_expr="$1"
-  local fallback="$2"
-  jq -r "($jq_expr // \"\") | if (type==\"string\" and length>0) then . else \"$fallback\" end" "$OPTS"
-}
-
-jq_num_or() {
-  local jq_expr="$1"
-  local fallback="$2"
-  jq -r "($jq_expr // $fallback) | tonumber" "$OPTS" 2>/dev/null || echo "$fallback"
-}
-
 trim() {
   local s="${1:-}"
   s="${s#"${s%%[![:space:]]*}"}"
   s="${s%"${s##*[![:space:]]}"}"
   printf '%s' "$s"
-}
-
-bool_or_false() {
-  local jq_expr="$1"
-  jq -r "($jq_expr // false) | if . == true then \"true\" else \"false\" end" "$OPTS"
 }
 
 timezone_exists() {
@@ -170,105 +152,74 @@ EOF
   fi
 }
 
-# PREMIUM
-if [ ! -f "$INSTANCE_FILE" ]; then
-  cat /proc/sys/kernel/random/uuid > "$INSTANCE_FILE"
-  logi "Premium: nouvel install_id généré"
-fi
+# Read every option in a single jq pass, emit shell-safe VAR='value' lines, eval them.
+#   V(json_key; env_name; default)  -> string-or-default
+#   B(json_key; env_name)           -> "true" or "false"
+eval "$(jq -r '
+  def V(k; e; d): "\(e)=" + ((.[k] // d) | tostring | @sh);
+  def B(k; e):    "\(e)=" + (((.[k] // false) | if . == true then "true" else "false" end) | @sh);
 
-SMART_ENERGY_FINANCE_INSTALL_ID="$(tr -d '\n\r' < "$INSTANCE_FILE")"
-SMART_ENERGY_FINANCE_PREMIUM_KEY="$(jq -r '.premium_key // ""' "$OPTS")"
+  V("currency";                         "CURRENCY";                         "EUR"),
+  V("contract_type";                    "CONTRACT_TYPE";                    "fixed"),
+  V("dashboard_language";               "DASHBOARD_LANGUAGE";               "en"),
+  B("dashboard_custom_cards_installed"; "DASHBOARD_CUSTOM_CARDS_INSTALLED"),
+  B("send_bip";                         "SEND_BIP"),
 
-export SMART_ENERGY_FINANCE_INSTALL_ID
-export SMART_ENERGY_FINANCE_PREMIUM_KEY
+  V("monthly_subscription_price";       "MONTHLY_SUBSCRIPTION_PRICE";       0),
+  V("fixed_import_price";               "FIXED_IMPORT_PRICE";               0),
+  V("fixed_export_price";               "FIXED_EXPORT_PRICE";               0),
 
-# Compat éventuelle si un noeud réutilise encore l'ancien nom
-export SMART_VOLTRONIC_INSTANCE_ID="$SMART_ENERGY_FINANCE_INSTALL_ID"
-export SMART_VOLTRONIC_PREMIUM_KEY="$SMART_ENERGY_FINANCE_PREMIUM_KEY"
+  V("tariff_1_name";  "TARIFF_1_NAME";  ""), V("tariff_1_price"; "TARIFF_1_PRICE"; 0), V("tariff_1_start"; "TARIFF_1_START"; ""), V("tariff_1_end"; "TARIFF_1_END"; ""),
+  V("tariff_2_name";  "TARIFF_2_NAME";  ""), V("tariff_2_price"; "TARIFF_2_PRICE"; 0), V("tariff_2_start"; "TARIFF_2_START"; ""), V("tariff_2_end"; "TARIFF_2_END"; ""),
+  V("tariff_3_name";  "TARIFF_3_NAME";  ""), V("tariff_3_price"; "TARIFF_3_PRICE"; 0), V("tariff_3_start"; "TARIFF_3_START"; ""), V("tariff_3_end"; "TARIFF_3_END"; ""),
+  V("tariff_4_name";  "TARIFF_4_NAME";  ""), V("tariff_4_price"; "TARIFF_4_PRICE"; 0), V("tariff_4_start"; "TARIFF_4_START"; ""), V("tariff_4_end"; "TARIFF_4_END"; ""),
 
-# DASHBOARD
-DASHBOARD_CUSTOM_CARDS_INSTALLED="$(bool_or_false '.dashboard_custom_cards_installed')"
-DASHBOARD_LANGUAGE="$(jq -r '.dashboard_language // "en"' "$OPTS")"
-export DASHBOARD_CUSTOM_CARDS_INSTALLED DASHBOARD_LANGUAGE
+  V("tempo_color_entity";    "TEMPO_COLOR_ENTITY";    ""),
+  V("tempo_blue_hc_price";   "TEMPO_BLUE_HC_PRICE";   0),
+  V("tempo_blue_hp_price";   "TEMPO_BLUE_HP_PRICE";   0),
+  V("tempo_white_hc_price";  "TEMPO_WHITE_HC_PRICE";  0),
+  V("tempo_white_hp_price";  "TEMPO_WHITE_HP_PRICE";  0),
+  V("tempo_red_hc_price";    "TEMPO_RED_HC_PRICE";    0),
+  V("tempo_red_hp_price";    "TEMPO_RED_HP_PRICE";    0),
+  V("tempo_hc_slot_1_start"; "TEMPO_HC_SLOT_1_START"; "22:00"),
+  V("tempo_hc_slot_1_end";   "TEMPO_HC_SLOT_1_END";   "06:00"),
+  V("tempo_hc_slot_2_start"; "TEMPO_HC_SLOT_2_START"; ""),
+  V("tempo_hc_slot_2_end";   "TEMPO_HC_SLOT_2_END";   ""),
 
-# OPTIONS
-SEND_BIP="$(jq -r '(.send_bip // true) | if . == true then "true" else "false" end' "$OPTS")"
-export SEND_BIP
+  B("solar_enabled";      "SOLAR_ENABLED"),
+  V("solar_input_mode";   "SOLAR_INPUT_MODE";    "energy"),
+  V("solar_energy_entity";"SOLAR_ENERGY_ENTITY"; ""),
+  V("solar_power_entity"; "SOLAR_POWER_ENTITY";  ""),
 
-# GENERAL
-CURRENCY="$(jq -r '.currency // "EUR"' "$OPTS")"
+  B("load_enabled";       "LOAD_ENABLED"),
+  V("load_input_mode";    "LOAD_INPUT_MODE";     "energy"),
+  V("load_energy_entity"; "LOAD_ENERGY_ENTITY";  ""),
+  V("load_power_entity";  "LOAD_POWER_ENTITY";   ""),
 
-# CONTRACT
-CONTRACT_TYPE="$(jq -r '.contract_type // "fixed"' "$OPTS")"
-MONTHLY_SUBSCRIPTION_PRICE="$(jq_num_or '.monthly_subscription_price' 0)"
-FIXED_IMPORT_PRICE="$(jq_num_or '.fixed_import_price' 0)"
-FIXED_EXPORT_PRICE="$(jq_num_or '.fixed_export_price' 0)"
+  B("battery_enabled";                  "BATTERY_ENABLED"),
+  V("battery_input_mode";               "BATTERY_INPUT_MODE";               "energy"),
+  V("battery_charge_energy_entity";     "BATTERY_CHARGE_ENERGY_ENTITY";     ""),
+  V("battery_discharge_energy_entity";  "BATTERY_DISCHARGE_ENERGY_ENTITY";  ""),
+  V("battery_charge_power_entity";      "BATTERY_CHARGE_POWER_ENTITY";      ""),
+  V("battery_discharge_power_entity";   "BATTERY_DISCHARGE_POWER_ENTITY";   ""),
+  V("battery_capacity_ah";              "BATTERY_CAPACITY_AH";              0),
+  V("battery_total_capacity_kwh";       "BATTERY_TOTAL_CAPACITY_KWH";       0),
 
-TARIFF_1_NAME="$(jq -r '.tariff_1_name // ""' "$OPTS")"
-TARIFF_1_PRICE="$(jq_num_or '.tariff_1_price' 0)"
-TARIFF_1_START="$(jq -r '.tariff_1_start // ""' "$OPTS")"
-TARIFF_1_END="$(jq -r '.tariff_1_end // ""' "$OPTS")"
+  B("grid_enabled";              "GRID_ENABLED"),
+  V("grid_input_mode";           "GRID_INPUT_MODE";            "energy"),
+  V("grid_import_energy_entity"; "GRID_IMPORT_ENERGY_ENTITY";  ""),
+  V("grid_export_energy_entity"; "GRID_EXPORT_ENERGY_ENTITY";  ""),
+  V("grid_import_power_entity";  "GRID_IMPORT_POWER_ENTITY";   ""),
+  V("grid_export_power_entity";  "GRID_EXPORT_POWER_ENTITY";   ""),
 
-TARIFF_2_NAME="$(jq -r '.tariff_2_name // ""' "$OPTS")"
-TARIFF_2_PRICE="$(jq_num_or '.tariff_2_price' 0)"
-TARIFF_2_START="$(jq -r '.tariff_2_start // ""' "$OPTS")"
-TARIFF_2_END="$(jq -r '.tariff_2_end // ""' "$OPTS")"
+  V("mqtt_host"; "MQTT_HOST"; ""),
+  V("mqtt_port"; "MQTT_PORT"; 1883),
+  V("mqtt_user"; "MQTT_USER"; ""),
+  V("mqtt_pass"; "MQTT_PASS"; ""),
 
-TARIFF_3_NAME="$(jq -r '.tariff_3_name // ""' "$OPTS")"
-TARIFF_3_PRICE="$(jq_num_or '.tariff_3_price' 0)"
-TARIFF_3_START="$(jq -r '.tariff_3_start // ""' "$OPTS")"
-TARIFF_3_END="$(jq -r '.tariff_3_end // ""' "$OPTS")"
-
-TARIFF_4_NAME="$(jq -r '.tariff_4_name // ""' "$OPTS")"
-TARIFF_4_PRICE="$(jq_num_or '.tariff_4_price' 0)"
-TARIFF_4_START="$(jq -r '.tariff_4_start // ""' "$OPTS")"
-TARIFF_4_END="$(jq -r '.tariff_4_end // ""' "$OPTS")"
-
-# TEMPO
-TEMPO_COLOR_ENTITY="$(jq -r '.tempo_color_entity // ""' "$OPTS")"
-TEMPO_BLUE_HC_PRICE="$(jq_num_or '.tempo_blue_hc_price' 0)"
-TEMPO_BLUE_HP_PRICE="$(jq_num_or '.tempo_blue_hp_price' 0)"
-TEMPO_WHITE_HC_PRICE="$(jq_num_or '.tempo_white_hc_price' 0)"
-TEMPO_WHITE_HP_PRICE="$(jq_num_or '.tempo_white_hp_price' 0)"
-TEMPO_RED_HC_PRICE="$(jq_num_or '.tempo_red_hc_price' 0)"
-TEMPO_RED_HP_PRICE="$(jq_num_or '.tempo_red_hp_price' 0)"
-TEMPO_HC_SLOT_1_START="$(jq -r '.tempo_hc_slot_1_start // "22:00"' "$OPTS")"
-TEMPO_HC_SLOT_1_END="$(jq -r '.tempo_hc_slot_1_end // "06:00"' "$OPTS")"
-TEMPO_HC_SLOT_2_START="$(jq -r '.tempo_hc_slot_2_start // ""' "$OPTS")"
-TEMPO_HC_SLOT_2_END="$(jq -r '.tempo_hc_slot_2_end // ""' "$OPTS")"
-
-# INPUTS
-SOLAR_ENABLED="$(bool_or_false '.solar_enabled')"
-SOLAR_INPUT_MODE="$(jq -r '.solar_input_mode // "energy"' "$OPTS")"
-SOLAR_ENERGY_ENTITY="$(jq -r '.solar_energy_entity // ""' "$OPTS")"
-SOLAR_POWER_ENTITY="$(jq -r '.solar_power_entity // ""' "$OPTS")"
-
-LOAD_ENABLED="$(bool_or_false '.load_enabled')"
-LOAD_INPUT_MODE="$(jq -r '.load_input_mode // "energy"' "$OPTS")"
-LOAD_ENERGY_ENTITY="$(jq -r '.load_energy_entity // ""' "$OPTS")"
-LOAD_POWER_ENTITY="$(jq -r '.load_power_entity // ""' "$OPTS")"
-
-BATTERY_ENABLED="$(bool_or_false '.battery_enabled')"
-BATTERY_INPUT_MODE="$(jq -r '.battery_input_mode // "energy"' "$OPTS")"
-BATTERY_CHARGE_ENERGY_ENTITY="$(jq -r '.battery_charge_energy_entity // ""' "$OPTS")"
-BATTERY_DISCHARGE_ENERGY_ENTITY="$(jq -r '.battery_discharge_energy_entity // ""' "$OPTS")"
-BATTERY_CHARGE_POWER_ENTITY="$(jq -r '.battery_charge_power_entity // ""' "$OPTS")"
-BATTERY_DISCHARGE_POWER_ENTITY="$(jq -r '.battery_discharge_power_entity // ""' "$OPTS")"
-BATTERY_CAPACITY_AH="$(jq_num_or '.battery_capacity_ah' 0)"
-BATTERY_TOTAL_CAPACITY_KWH="$(jq_num_or '.battery_total_capacity_kwh' 0)"
-
-GRID_ENABLED="$(bool_or_false '.grid_enabled')"
-GRID_INPUT_MODE="$(jq -r '.grid_input_mode // "energy"' "$OPTS")"
-GRID_IMPORT_ENERGY_ENTITY="$(jq -r '.grid_import_energy_entity // ""' "$OPTS")"
-GRID_EXPORT_ENERGY_ENTITY="$(jq -r '.grid_export_energy_entity // ""' "$OPTS")"
-GRID_IMPORT_POWER_ENTITY="$(jq -r '.grid_import_power_entity // ""' "$OPTS")"
-GRID_EXPORT_POWER_ENTITY="$(jq -r '.grid_export_power_entity // ""' "$OPTS")"
-
-# MQTT
-MQTT_HOST="$(jq_str_or '.mqtt_host' '')"
-MQTT_PORT="$(jq_num_or '.mqtt_port' 1883)"
-MQTT_USER="$(jq -r '.mqtt_user // ""' "$OPTS")"
-MQTT_PASS="$(jq -r '.mqtt_pass // ""' "$OPTS")"
+  V("timezone_mode";   "TZ_MODE_RAW";   "UTC"),
+  V("timezone_custom"; "TZ_CUSTOM_RAW"; "")
+' "$OPTS")"
 
 if [ -z "$MQTT_HOST" ]; then
   loge "mqtt_host vide."
@@ -281,8 +232,6 @@ if [ -z "$MQTT_USER" ] || [ -z "$MQTT_PASS" ]; then
 fi
 
 # TIMEZONE
-TZ_MODE_RAW="$(jq -r '.timezone_mode // "UTC"' "$OPTS")"
-TZ_CUSTOM_RAW="$(jq -r '.timezone_custom // ""' "$OPTS")"
 
 if [ "$TZ_MODE_RAW" = "CUSTOM" ]; then
   TZ_REQUESTED="$TZ_CUSTOM_RAW"

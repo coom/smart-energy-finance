@@ -17,17 +17,6 @@ L’add-on crée automatiquement des entités Home Assistant ainsi qu’un dashb
 
 ---
 
-## ❤️ Soutenir le développeur
-
-Si vous aimez ce projet, vous pouvez soutenir son développement ici :
-
-[![Ko-fi](https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/kofi-button.png)](https://ko-fi.com/tapion69)
-
-Le mode Premium est disponible via Ko-fi.
-Après votre soutien / achat, vous recevez votre clé premium.
-
----
-
 ## ⚠️ Recommandation importante
 
 Pour obtenir les meilleurs résultats, il est **fortement recommandé** d’utiliser :
@@ -76,7 +65,7 @@ L’add-on calcule automatiquement et crée des entités pour :
 
 ---
 
-## ⚡ Dashboard Premium Énergie
+## ⚡ Dashboard Énergie
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
 
@@ -87,11 +76,11 @@ Le dashboard Énergie comprend :
 * l’analyse de l’autosuffisance
 * la vue de dépendance réseau
 * le contexte tarifaire énergétique
-* des cartes d’analyse premium
+* des cartes d’analyse
 
 ---
 
-## 🔋 Dashboard Premium Batterie
+## 🔋 Dashboard Batterie
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
 
@@ -100,12 +89,12 @@ Le dashboard Batterie comprend :
 * l’analyse charge / décharge batterie
 * la valorisation financière de l’usage batterie
 * les statistiques batterie mensuelles et annuelles
-* des donuts premium
+* des donuts
 * une vue détaillée des économies batterie
 
 ---
 
-## 💶 Dashboard Premium Économie
+## 💶 Dashboard Économie
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
 
@@ -117,34 +106,21 @@ Le dashboard Économie comprend :
 * l’analyse de la valeur solaire
 * l’impact financier de la batterie
 * l’effet du coût d’abonnement
-* des donuts premium et une vue historique
+* des donuts et une vue historique
 
 ---
 
-## 📈 Fonctionnalités Premium
+## 📈 Fonctionnalités incluses
 
-Smart Energy Finance inclut un mode **Premium** qui débloque des fonctions avancées.
+Toutes les fonctionnalités sont incluses — aucune clé ni achat requis :
 
-### Le Premium comprend :
-
-* des dashboards premium avancés
-* l’historique jour / mois / année
-* l’analyse financière de la batterie
-* des donuts avancés
-* des statistiques longue durée
-* des vues Home Assistant enrichies
-* des insights premium pour optimiser votre énergie
-
----
-
-## 💳 Comment obtenir le Premium
-
-Le Premium est disponible via Ko-fi :
-
-[https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
-
-Après votre soutien / achat, vous recevez votre clé premium.
-Cette clé peut ensuite être ajoutée dans la configuration de l’add-on pour débloquer les fonctions premium.
+* dashboards avancés
+* historique jour / mois / année
+* analyse financière de la batterie
+* donuts
+* statistiques longue durée
+* vues Home Assistant enrichies
+* insights pour optimiser votre énergie
 
 ---
 
@@ -198,7 +174,7 @@ dashboard_custom_cards_installed: true
 
 ## 🚀 Création automatique du dashboard
 
-L’add-on crée automatiquement un dashboard premium dans Home Assistant.
+L’add-on crée automatiquement un dashboard dans Home Assistant.
 
 Cela signifie :
 
@@ -206,7 +182,7 @@ Cela signifie :
 * utilisation automatique des entités
 * support FR / EN
 * fonctionnement avec ou sans cartes custom
-* présentation visuelle optimisée pour le premium
+* présentation visuelle optimisée
 
 ---
 
@@ -219,14 +195,6 @@ Cela signifie :
 
 ---
 
-## 🧑‍💻 Auteur
+## 🧑‍💻 Crédits
 
-Développé par Tapion69
-
----
-
-## ❤️ Soutien
-
-Si vous aimez ce projet et souhaitez soutenir son développement :
-
-[https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
+Développé à l’origine par Tapion69. Ceci est un fork MIT avec toutes les fonctionnalités activées.

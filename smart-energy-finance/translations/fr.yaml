@@ -160,11 +160,6 @@ configuration:
   mqtt_pass:
     name: "Mot de passe MQTT"
 
-  premium_section:
-    name: "────────── PREMIUM ──────────"
-  premium_key:
-    name: "Clé Premium"
-
   dashboard_section:
     name: "────────── DASHBOARD ──────────"
   dashboard_custom_cards_installed:

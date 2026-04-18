@@ -107,9 +107,6 @@ options:
   mqtt_user: ""
   mqtt_pass: ""
 
-  premium_section: "────────── PREMIUM ──────────"
-  premium_key: ""
-
   dashboard_section: "────────── DASHBOARD ──────────"
   dashboard_custom_cards_installed: false
   dashboard_language: "en"
@@ -199,9 +196,6 @@ schema:
   mqtt_port: int
   mqtt_user: str
   mqtt_pass: password
-
-  premium_section: str?
-  premium_key: str?
 
   dashboard_section: str?
   dashboard_custom_cards_installed: bool

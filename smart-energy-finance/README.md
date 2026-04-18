@@ -20,17 +20,6 @@ The add-on automatically creates Home Assistant entities and a ready-to-use dash
 
 ---
 
-## ❤️ Support the developer
-
-If you like this project, you can support development here:
-
-[![Ko-fi](https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/kofi-button.png)](https://ko-fi.com/tapion69)
-
-Premium access is available via Ko-fi.
-After support/purchase, you will receive your premium key.
-
----
-
 ## ⚠️ Important recommendation
 
 For the best results, it is **strongly recommended** to use:
@@ -79,7 +68,7 @@ The add-on automatically calculates and creates entities for:
 
 ---
 
-## ⚡ Premium Energy Dashboard
+## ⚡ Energy Dashboard
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
 
@@ -90,11 +79,11 @@ The Energy dashboard includes:
 * self-sufficiency analysis
 * grid dependency overview
 * energy cost context
-* premium analytics cards
+* analytics cards
 
 ---
 
-## 🔋 Premium Battery Dashboard
+## 🔋 Battery Dashboard
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
 
@@ -103,12 +92,12 @@ The Battery dashboard includes:
 * battery charge / discharge analysis
 * battery usage financial value
 * monthly and yearly battery statistics
-* premium donut charts
+* donut charts
 * detailed battery savings view
 
 ---
 
-## 💶 Premium Economy Dashboard
+## 💶 Economy Dashboard
 
 <img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
 
@@ -120,34 +109,21 @@ The Economy dashboard includes:
 * solar value analysis
 * battery savings impact
 * subscription cost effect
-* premium donut charts and history view
+* donut charts and history view
 
 ---
 
-## 📈 Premium Features
+## 📈 Included features
 
-Smart Energy Finance includes a **Premium mode** that unlocks advanced features.
+All features are included — no key or purchase required:
 
-### Premium includes:
-
-* advanced premium dashboards
+* advanced dashboards
 * daily / monthly / yearly history
 * battery financial analytics
-* advanced donut charts
+* donut charts
 * long-term statistics
 * richer Home Assistant views
-* premium insights for energy optimization
-
----
-
-## 💳 How to get Premium
-
-Premium is available through Ko-fi:
-
-[https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
-
-After support/purchase, you receive your premium key.
-This key can then be added to the add-on configuration to unlock premium features.
+* insights for energy optimization
 
 ---
 
@@ -201,7 +177,7 @@ dashboard_custom_cards_installed: true
 
 ## 🚀 Automatic dashboard creation
 
-The add-on automatically creates a premium dashboard inside Home Assistant.
+The add-on automatically creates a dashboard inside Home Assistant.
 
 This means:
 
@@ -209,7 +185,7 @@ This means:
 * automatic entity usage
 * FR / EN dashboard support
 * works with or without custom cards
-* optimized for premium visual presentation
+* optimized visual presentation
 
 ---
 
@@ -222,14 +198,6 @@ This means:
 
 ---
 
-## 🧑‍💻 Author
+## 🧑‍💻 Credits
 
-Developed by Tapion69
-
----
-
-## ❤️ Support
-
-If you enjoy this project and want to support development:
-
-[https://ko-fi.com/tapion69](https://ko-fi.com/tapion69)
+Originally developed by Tapion69. This is an MIT fork with all features unlocked.

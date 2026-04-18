@@ -1,3 +1,11 @@
+### **Changelog 0.1.9**
+
+**Changed**
+
+* Premium features are now unlocked for all users — no premium key required
+* Removed the `premium_key` option from the add-on configuration UI
+* `flows.json` updated accordingly (bumped `flows_version.txt` so existing installs pick up the change at next start)
+
 ### **Changelog 0.1.7**
 
 * Bug fixe 
