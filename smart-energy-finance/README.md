@@ -1,9 +1,15 @@
+🇬🇧 **English** | [🇫🇷 Français](./README_FR.md)
+
+---
+
+> 🔓 **Forked by coom — premium features are now free.**
+> All dashboards and analytics are unlocked out of the box. No key, no purchase.
+
+---
+
 ## 📊 Overview
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/compteur.png" width="900"/>
-
-➡️ French documentation:
-https://github.com/jean-luc1203/smart-energy-finance/blob/main/smart-energy-finance/README_FR.md
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/compteur.png" width="900"/>
 
 Smart Energy Finance is an advanced Home Assistant add-on designed to analyze the financial side of your energy system.
 
@@ -70,7 +76,7 @@ The add-on automatically calculates and creates entities for:
 
 ## ⚡ Energy Dashboard
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
 
 The Energy dashboard includes:
 
@@ -85,7 +91,7 @@ The Energy dashboard includes:
 
 ## 🔋 Battery Dashboard
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
 
 The Battery dashboard includes:
 
@@ -99,7 +105,7 @@ The Battery dashboard includes:
 
 ## 💶 Economy Dashboard
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
 
 The Economy dashboard includes:
 
@@ -200,4 +206,4 @@ This means:
 
 ## 🧑‍💻 Credits
 
-Originally developed by Tapion69. This is an MIT fork with all features unlocked.
+Originally developed by Tapion69. This is an MIT fork maintained by [coom](https://github.com/coom) with all features unlocked.

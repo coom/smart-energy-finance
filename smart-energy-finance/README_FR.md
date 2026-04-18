@@ -1,6 +1,15 @@
+[🇬🇧 English](./README.md) | 🇫🇷 **Français**
+
+---
+
+> 🔓 **Fork par coom — les fonctionnalités premium sont désormais gratuites.**
+> Tous les dashboards et analyses sont débloqués dès l'installation. Aucune clé, aucun achat requis.
+
+---
+
 ## 📊 Présentation
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/compteur.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/compteur.png" width="900"/>
 
 Smart Energy Finance est un add-on Home Assistant avancé conçu pour analyser la partie financière de votre installation énergétique.
 
@@ -10,18 +19,18 @@ Il permet de comprendre facilement :
 * la valeur de votre production solaire
 * la rentabilité de votre batterie
 * la dépendance au réseau
-* votre niveau d’autosuffisance
+* votre niveau d'autosuffisance
 * les économies réalisées dans le temps
 
-L’add-on crée automatiquement des entités Home Assistant ainsi qu’un dashboard prêt à l’emploi pour afficher vos analyses financières au jour, au mois et à l’année.
+L'add-on crée automatiquement des entités Home Assistant ainsi qu'un dashboard prêt à l'emploi pour afficher vos analyses financières au jour, au mois et à l'année.
 
 ---
 
 ## ⚠️ Recommandation importante
 
-Pour obtenir les meilleurs résultats, il est **fortement recommandé** d’utiliser :
+Pour obtenir les meilleurs résultats, il est **fortement recommandé** d'utiliser :
 
-* ✅ des compteurs d’énergie journaliers en **kWh**
+* ✅ des compteurs d'énergie journaliers en **kWh**
 * ❌ et non des capteurs de puissance bruts en **W**
 
 Pourquoi :
@@ -29,9 +38,9 @@ Pourquoi :
 * calculs beaucoup plus précis
 * meilleure stabilité dans le temps
 * historique journalier / mensuel / annuel fiable
-* moins d’erreurs et moins de dérive
+* moins d'erreurs et moins de dérive
 
-Les capteurs de puissance peuvent fonctionner dans certains cas, mais les compteurs d’énergie restent la solution la plus propre et la plus fiable.
+Les capteurs de puissance peuvent fonctionner dans certains cas, mais les compteurs d'énergie restent la solution la plus propre et la plus fiable.
 
 ---
 
@@ -42,52 +51,52 @@ Ce module est compatible avec :
 * les onduleurs
 * les panneaux solaires
 * les batteries
-* les capteurs d’énergie Home Assistant
-* les entités personnalisées venant d’autres add-ons ou intégrations
+* les capteurs d'énergie Home Assistant
+* les entités personnalisées venant d'autres add-ons ou intégrations
 
-Il a été conçu pour rester flexible et fonctionner avec de nombreux types d’installations, à condition que les entités nécessaires soient disponibles dans Home Assistant.
+Il a été conçu pour rester flexible et fonctionner avec de nombreux types d'installations, à condition que les entités nécessaires soient disponibles dans Home Assistant.
 
 ---
 
 ## 💰 Ce que fait Smart Energy Finance
 
-L’add-on calcule automatiquement et crée des entités pour :
+L'add-on calcule automatiquement et crée des entités pour :
 
 * les économies du jour
 * les économies du mois
-* les économies de l’année
+* les économies de l'année
 * la valeur financière de la production solaire
 * la valeur financière de la décharge batterie
 * le coût réel total avec abonnement inclus
 * le coût estimé sans solaire
-* l’analyse import / export réseau
-* les ratios d’autosuffisance et de dépendance réseau
+* l'analyse import / export réseau
+* les ratios d'autosuffisance et de dépendance réseau
 
 ---
 
 ## ⚡ Dashboard Énergie
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/energie.png" width="900"/>
 
 Le dashboard Énergie comprend :
 
 * la répartition solaire / batterie / réseau
 * le mix énergétique en temps réel
-* l’analyse de l’autosuffisance
+* l'analyse de l'autosuffisance
 * la vue de dépendance réseau
 * le contexte tarifaire énergétique
-* des cartes d’analyse
+* des cartes d'analyse
 
 ---
 
 ## 🔋 Dashboard Batterie
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/batterie.png" width="900"/>
 
 Le dashboard Batterie comprend :
 
-* l’analyse charge / décharge batterie
-* la valorisation financière de l’usage batterie
+* l'analyse charge / décharge batterie
+* la valorisation financière de l'usage batterie
 * les statistiques batterie mensuelles et annuelles
 * des donuts
 * une vue détaillée des économies batterie
@@ -96,16 +105,16 @@ Le dashboard Batterie comprend :
 
 ## 💶 Dashboard Économie
 
-<img src="https://raw.githubusercontent.com/jean-luc1203/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
+<img src="https://raw.githubusercontent.com/coom/smart-energy-finance/main/smart-energy-finance/docs/images/economie.png" width="900"/>
 
 Le dashboard Économie comprend :
 
 * la répartition financière journalière
 * la vue des économies mensuelles
 * la vue des économies annuelles
-* l’analyse de la valeur solaire
-* l’impact financier de la batterie
-* l’effet du coût d’abonnement
+* l'analyse de la valeur solaire
+* l'impact financier de la batterie
+* l'effet du coût d'abonnement
 * des donuts et une vue historique
 
 ---
@@ -174,7 +183,7 @@ dashboard_custom_cards_installed: true
 
 ## 🚀 Création automatique du dashboard
 
-L’add-on crée automatiquement un dashboard dans Home Assistant.
+L'add-on crée automatiquement un dashboard dans Home Assistant.
 
 Cela signifie :
 
@@ -197,4 +206,4 @@ Cela signifie :
 
 ## 🧑‍💻 Crédits
 
-Développé à l’origine par Tapion69. Ceci est un fork MIT avec toutes les fonctionnalités activées.
+Développé à l'origine par Tapion69. Ceci est un fork MIT maintenu par [coom](https://github.com/coom) avec toutes les fonctionnalités activées.
